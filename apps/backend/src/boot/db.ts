@@ -26,8 +26,7 @@ export const db: KyselyInstance = new Kysely<KyselyDatabaseDefinition>({
             return fieldString ? new Date(fieldString) : null;
           }
           case "JSON": {
-            const fieldString = field.string();
-            return fieldString ? JSON.stringify(fieldString) : null;
+            return field.string();
           }
           default:
             return next();

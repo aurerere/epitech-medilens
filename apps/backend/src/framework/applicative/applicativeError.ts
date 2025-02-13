@@ -55,6 +55,24 @@ export class ApplicativeError {
     );
   }
 
+  static invalid(...constructors: Constructor<AnySerializable>[]) {
+    return new this.Class(
+      `Invalid ${constructors.reduce(
+        (acc, currentValue, currentIndex) =>
+          acc +
+          (currentIndex === constructors.length
+            ? currentValue.name
+            : `${currentValue.name}, `),
+        "",
+      )}`,
+      HttpError.NOT_FOUND,
+    );
+  }
+
+  static unauthenticated() {
+    return new this.Class("Unauthenticated", HttpError.UNAUTHORIZED);
+  }
+
   static conflict<I extends AnySerializable>(ctor: Constructor<I>, value: I) {
     return new this.Class(
       `Already used ${ctor.name} ${value.serialize()}`,

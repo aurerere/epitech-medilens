@@ -1,4 +1,4 @@
-import type { HttpError } from "./status";
+import { HttpError } from "./status";
 import { type ErrorResponseKind, Response } from "./response";
 
 export abstract class Exception<
@@ -13,6 +13,18 @@ export abstract class Exception<
     readonly internalData?: Record<string, unknown>,
   ) {
     super(message);
+  }
+
+  static internal(internalData?: Record<string, unknown>) {
+    class InternalError extends Exception<HttpError, "InternalError"> {
+      readonly kind = "InternalError";
+
+      constructor(internalData?: Record<string, unknown>) {
+        super("Internal error", HttpError.INTERNAL, internalData);
+      }
+    }
+
+    return new InternalError(internalData);
   }
 
   toResponse() {

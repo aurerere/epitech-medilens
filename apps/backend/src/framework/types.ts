@@ -8,6 +8,20 @@ export type NullToUndef<T> = T extends null
     ? { [K in keyof T]: NullToUndef<T[K]> }
     : T;
 
+export type JsonObject = {
+  [x: string]: JsonValue | undefined;
+};
+
+type JsonPrimitive = string | number | boolean | null | undefined;
+
+type JsonArray = JsonValue[];
+
+type JsonValue = JsonPrimitive | JsonArray | JsonObject;
+
+export type AnySerialized = JsonValue;
+
+export type Serialized<T extends AnySerializable> = ReturnType<T["serialize"]>;
+
 export interface AnySerializable {
-  serialize(): any;
+  serialize(...params: any[]): AnySerialized;
 }

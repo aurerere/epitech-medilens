@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { v7 } from "uuid";
 
 import { Primitive } from "./primitive.value";
 
@@ -7,7 +7,7 @@ export function AnyId<const T extends string>(label: T) {
     label,
   }) {
     static generate<T extends typeof AnyId>(this: T) {
-      return new this(randomUUID());
+      return new this(v7()) as InstanceType<T>;
     }
   }
 

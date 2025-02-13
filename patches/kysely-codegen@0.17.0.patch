@@ -1,7 +1,16 @@
 diff --git a/dist/generator/dialects/mysql/mysql-adapter.js b/dist/generator/dialects/mysql/mysql-adapter.js
-index 00fa99cafbf52f3f821403b82260c2ae76c15a84..637f4631b89b989a208d275f0ade8b5923306fe0 100644
+index 00fa99cafbf52f3f821403b82260c2ae76c15a84..a5c5bf1ecb951e818e62e2407b9100ce5be94ca9 100644
 --- a/dist/generator/dialects/mysql/mysql-adapter.js
 +++ b/dist/generator/dialects/mysql/mysql-adapter.js
+@@ -50,7 +50,7 @@ class MysqlAdapter extends adapter_1.Adapter {
+             geomcollection: new array_expression_node_1.ArrayExpressionNode(new identifier_node_1.IdentifierNode('Geometry')), // Specified as "geometrycollection" in Adminer.
+             geometry: new identifier_node_1.IdentifierNode('Geometry'),
+             int: new identifier_node_1.IdentifierNode('number'),
+-            json: new identifier_node_1.IdentifierNode('Json'),
++            json: new identifier_node_1.IdentifierNode('string'),
+             linestring: new identifier_node_1.IdentifierNode('LineString'),
+             longblob: new identifier_node_1.IdentifierNode('Buffer'),
+             longtext: new identifier_node_1.IdentifierNode('string'),
 @@ -68,7 +68,7 @@ class MysqlAdapter extends adapter_1.Adapter {
              time: new identifier_node_1.IdentifierNode('string'),
              timestamp: new identifier_node_1.IdentifierNode('Date'),

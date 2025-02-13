@@ -26,7 +26,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "kysely-codegen": "patches/kysely-codegen.patch"
+      "kysely-codegen@0.17.0": "patches/kysely-codegen@0.17.0.patch"
     }
   }
 }

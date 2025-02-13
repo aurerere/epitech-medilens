@@ -20,7 +20,7 @@ export const HttpError = {
     code: "FORBIDDEN",
   },
   LOGIN_TIME_OUT: {
-    status: 440,
+    status: 401,
     code: "LOGIN_TIME_OUT",
   },
   NOT_FOUND: {

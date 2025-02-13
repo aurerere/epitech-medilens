@@ -1,5 +1,5 @@
 import type { Email } from "./values/email.value";
-import type { UserId } from "./values/userId.value";
+import { UserId } from "./values/userId.value";
 import type { HashedPassword } from "./values/password";
 
 export class User {
@@ -8,4 +8,16 @@ export class User {
     private email: Email,
     private password: HashedPassword,
   ) {}
+
+  getPassword() {
+    return this.password;
+  }
+
+  getEmail() {
+    return this.email;
+  }
+
+  static create(email: Email, password: HashedPassword) {
+    return new User(UserId.generate(), email, password);
+  }
 }
