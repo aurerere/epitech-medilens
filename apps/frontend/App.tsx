@@ -8,7 +8,7 @@ import { AuthScreen } from "./screens/authScreen";
 
 export default function App() {
   const [isAppReady, setIsAppReady] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -19,7 +19,7 @@ export default function App() {
       } catch (e) {
         console.error(e);
       } finally {
-        setIsLoggedIn(false);
+        setIsLoggedIn(true);
         setIsAppReady(true);
       }
     })();

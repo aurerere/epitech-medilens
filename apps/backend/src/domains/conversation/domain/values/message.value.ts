@@ -1,4 +1,5 @@
 import type { MessageContent } from "./messageContent.value";
+import type { DrugName } from "./drugName.value";
 
 import { Value } from "../../../../framework/domain/value";
 import { ApplicativeError } from "../../../../framework/applicative/applicativeError";
@@ -6,6 +7,10 @@ import { ApplicativeError } from "../../../../framework/applicative/applicativeE
 export interface IMessage {
   role: "user" | "system" | "assistant";
   content: string;
+}
+
+function generateSystemPrompt(drugName: DrugName) {
+  return `${drugName.serialize()}`;
 }
 
 export class Message extends Value<IMessage> {
@@ -20,10 +25,17 @@ export class Message extends Value<IMessage> {
     }
   }
 
-  fromUser(content: MessageContent) {
+  static fromUser(content: MessageContent) {
     return new Message({
       role: "user",
       content: content.serialize(),
+    });
+  }
+
+  static first(drugName: DrugName) {
+    return new Message({
+      role: "system",
+      content: generateSystemPrompt(drugName),
     });
   }
 }

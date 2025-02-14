@@ -15,6 +15,7 @@ interface ButtonProps {
   text: string;
   variant?: "primary" | "secondary";
   disabled?: boolean;
+  autoWidth?: boolean;
 }
 
 export const Button = ({
@@ -23,10 +24,17 @@ export const Button = ({
   text,
   variant = "primary",
   disabled,
+  autoWidth,
 }: ButtonProps) => {
   return (
     <Pressable onPress={onPress} disabled={busy || disabled}>
-      <View style={[styles.container, styles[variant]]}>
+      <View
+        style={[
+          styles.container,
+          styles[variant],
+          autoWidth ? { alignSelf: "flex-start" } : undefined,
+        ]}
+      >
         <Text
           style={[
             styles.text,
@@ -56,6 +64,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     padding: Spacing.MD,
     borderRadius: Radius.XS,
+    width: "auto",
+    paddingVertical: 16,
   },
   activityIndicator: {
     position: "absolute",

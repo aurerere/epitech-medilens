@@ -1,5 +1,5 @@
-import type { ConversationId } from "./values/conversationId.value";
-import type { Message } from "./values/message.value";
+import { ConversationId } from "./values/conversationId.value";
+import { Message } from "./values/message.value";
 import type { DrugName } from "./values/drugName.value";
 import type { StoredFileUrl } from "./values/storedFileUrl.value";
 
@@ -24,5 +24,15 @@ export class Conversation {
 
   getThumbnailUrl() {
     return this.thumbnail;
+  }
+
+  static create(drugName: DrugName, thumbnail: StoredFileUrl, userId: UserId) {
+    return new Conversation(
+      ConversationId.generate(),
+      [Message.first(drugName)],
+      userId,
+      drugName,
+      thumbnail,
+    );
   }
 }
