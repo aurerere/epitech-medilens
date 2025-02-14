@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "strict": true
+  },
+  "extends": [
+    "../../tsconfig.base.json",
+    "expo/tsconfig.base"
+  ]
+}

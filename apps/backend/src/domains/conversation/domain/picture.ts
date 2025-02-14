@@ -16,4 +16,8 @@ export class Picture {
 
     return new Picture(type, data, v7());
   }
+
+  toBase64() {
+    return this.data.toString("base64");
+  }
 }

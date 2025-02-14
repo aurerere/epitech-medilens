@@ -1,5 +1,6 @@
 import type { Kysely } from "kysely";
-import type { DB } from "kysely-codegen";
+
+import type { DB } from "./kysely.definition";
 
 import type { NullToUndef } from "../../types";
 

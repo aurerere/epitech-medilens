@@ -8,7 +8,7 @@
     "dev": "nodemon ./src/server.ts",
     
     "--- SCRIPTS ---": "",
-    "database:build": "ts-node ./src/scripts/database/build.ts && kysely-codegen"
+    "database:build": "ts-node ./src/scripts/database/build.ts && kysely-codegen --out-file ./src/framework/infrastructure/store/kysely.definition.ts"
   },
   "keywords": [],
   "author": "",
